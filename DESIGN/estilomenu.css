@@ -1,0 +1,26 @@
+/* Menú columna izquierda simple */
+nav {
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* Lista de enlaces */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+/* Contenido a la derecha del menú */
+.contenido {
+  margin-left: 200px;
+}
