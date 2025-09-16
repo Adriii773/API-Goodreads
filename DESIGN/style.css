@@ -22,6 +22,5 @@
 }
 
 .contenedor-botones{
-  display: flex
-  gap 10px;
+  display: flex;
 }
