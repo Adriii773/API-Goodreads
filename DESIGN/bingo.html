@@ -2,65 +2,73 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Inicio</title>
-   <link rel="stylesheet" href="estilomenu.css">
+  <title>Tabla interactiva</title>
+  <link rel="stylesheet" href="estilomenu.css">
 </head>
 
 <body>
 
-  <!-- Menú -->
-<nav>
-  <ul>
-    <li><a href="estanterías.html">Estanterías</a></li>
-    <li><a href="sagas.html">Sagas</a></li>
-    <li><a href="bingo.html">Bingo</a></li>
-    <li><a href="contact.html">Contacto</a></li>
-  </ul>
-</nav>
+  <!-- Menú principal -->
+  <nav class="menu-principal">
+    <ul>
+       <li class="titulo-menu">Menú</li>
+      <li><a href="estanterías.html">Estanterías</a></li>
+      <li><a href="sagas.html">Sagas</a></li>
+      <li><a href="bingo.html">Bingo</a></li>
+      <li><a href="contact.html">Contacto</a></li>
+    </ul>
+    <button id="toggle-menu">❮</button>
+  </nav>
   
-  <table>
-  <tr>
-    <th>Nombre</th>
-    <th>Edad</th>
-    <th>Ciudad</th>
-  </tr>
-  <tr>
-    <td style="background-color: white;">Ana</td>
-    <td style="background-color: white;">25</td>
-    <td style="background-color: white;">Madrid</td>
-  </tr>
-  <tr>
-    <td style="background-color: white;">Carlos</td>
-    <td style="background-color: white;">30</td>
-    <td style="background-color: white;">Barcelona</td>
-  </tr>
-  <tr>
-    <td style="background-color: white;">Lucía</td>
-    <td style="background-color: white;">28</td>
-    <td style="background-color: white;">Valencia</td>
-  </tr>
-</table>
+  <!-- Contenido principal -->
+  <div class="contenido">
+    <h1>Tabla interactiva</h1>
 
-<script>
-  const celdas = document.querySelectorAll('td');
+    <table border="1" cellpadding="10">
+      <tr>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Ciudad</th>
+      </tr>
+      <tr>
+        <td style="background-color: white;">Ana</td>
+        <td style="background-color: white;">25</td>
+        <td style="background-color: white;">Madrid</td>
+      </tr>
+      <tr>
+        <td style="background-color: white;">Carlos</td>
+        <td style="background-color: white;">30</td>
+        <td style="background-color: white;">Barcelona</td>
+      </tr>
+      <tr>
+        <td style="background-color: white;">Lucía</td>
+        <td style="background-color: white;">28</td>
+        <td style="background-color: white;">Valencia</td>
+      </tr>
+    </table>
+  </div>
 
-  celdas.forEach(celda => {
-    // Guardamos el color original en un atributo
-    celda.dataset.colorOriginal = celda.style.backgroundColor;
+  <!-- Script para el menú -->
+  <script src="scripts.js"></script>
 
-    celda.addEventListener('click', () => {
-      if (celda.classList.contains('seleccionada')) {
-        // Si ya tiene la clase, volvemos al color original
-        celda.style.backgroundColor = celda.dataset.colorOriginal;
-        celda.classList.remove('seleccionada');
-      } else {
-        // Si no tiene la clase, cambiamos al color de selección
-        celda.style.backgroundColor = 'yellow';
-        celda.classList.add('seleccionada');
-      }
+  <!-- Script para la tabla -->
+  <script>
+    const celdas = document.querySelectorAll('td');
+
+    celdas.forEach(celda => {
+      celda.dataset.colorOriginal = celda.style.backgroundColor;
+
+      celda.addEventListener('click', () => {
+        if (celda.classList.contains('seleccionada')) {
+          celda.style.backgroundColor = celda.dataset.colorOriginal;
+          celda.classList.remove('seleccionada');
+        } else {
+          celda.style.backgroundColor = 'yellow';
+          celda.classList.add('seleccionada');
+        }
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
