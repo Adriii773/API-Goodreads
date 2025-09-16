@@ -5,9 +5,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 20px;
+  transition: transform 0.3s;
+  background-color: #eee; /* opcional, puedes quitarlo si quieres minimalista */
 }
 
+/* Lista de enlaces del menú principal */
 .menu-principal ul {
   list-style: none;
   padding: 0;
@@ -21,15 +23,37 @@
   padding: 10px 15px;
 }
 
-/* Contenido a la derecha del menú principal */
-.contenido {
-  margin-left: 210px; /* espacio para menú principal */
-  padding: 20px;
+/* Botón para ocultar/mostrar menú */
+#toggle-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Flecha en la esquina superior derecha */
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 18px;
 }
 
-/* Menú propio de la página, dentro del contenido */
+/* Menú oculto: se mueve a la izquierda */
+.menu-principal.oculto {
+  transform: translateX(-170px);
+}
+
+/* Contenido a la derecha del menú */
+.contenido {
+  margin-left: 200px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+/* Ajuste cuando el menú está oculto */
+.contenido.menu-oculto {
+  margin-left: 30px;
+}
+
+/* Menú propio de la página, debajo del contenido */
 .menu-pagina {
-  margin-top: 20px; /* espacio debajo del texto */
+  margin-top: 20px;
 }
 
 .menu-pagina ul {

@@ -1,26 +1,83 @@
-/* Menú columna izquierda simple */
-nav {
+/* Menú principal como columna izquierda */
+.menu-principal {
   width: 200px;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
+  transition: transform 0.3s;
+  background-color: #eee; /* opcional */
 }
 
-/* Lista de enlaces */
-nav ul {
+/* Lista de enlaces del menú principal */
+.menu-principal ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-nav ul li a {
+.menu-principal ul li a {
   display: block;
   text-decoration: none;
   color: black;
+  padding: 10px 15px;
+}
+
+.titulo-menu {
+  font-size: 20px;     /* más grande */
+  font-weight: bold;   /* en negrita */
+  text-align: center;  /* centrado */
+  padding: 15px 0;     /* espacio arriba y abajo */
+  background-color: #ddd; /* opcional: resalta el fondo */
+}
+
+
+/* Botón para ocultar/mostrar menú */
+#toggle-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Flecha en la esquina superior derecha */
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: black;      /* 🔹 asegura que se vea el icono */
+  width: 30px;       /* 🔹 tamaño mínimo */
+  height: 30px;      /* 🔹 tamaño mínimo */
+}
+
+
+/* Menú oculto: se mueve a la izquierda */
+.menu-principal.oculto {
+  transform: translateX(-170px);
 }
 
 /* Contenido a la derecha del menú */
 .contenido {
   margin-left: 200px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+/* Ajuste cuando el menú está oculto */
+.contenido.menu-oculto {
+  margin-left: 30px;
+}
+
+/* Menú propio de la página, debajo del contenido */
+.menu-pagina {
+  margin-top: 20px;
+}
+
+.menu-pagina ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-pagina ul li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 5px 10px;
 }

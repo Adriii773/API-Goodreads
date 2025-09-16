@@ -8,13 +8,15 @@
 <body>
 
 <!-- Menú -->
-<nav>
+<nav class="menu-principal">
   <ul>
+    <li class="titulo-menu">Menú</li>
     <li><a href="estanterías.html">Estanterías</a></li>
     <li><a href="sagas.html">Sagas</a></li>
     <li><a href="bingo.html">Bingo</a></li>
     <li><a href="contact.html">Contacto</a></li>
   </ul>
+  <button id="toggle-menu"></button>
 </nav>
 
 <!-- Contenido principal -->
@@ -27,19 +29,6 @@
   <button id="search-btn">Buscar</button>
 </div>
 
-<script>
-  const searchBtn = document.getElementById('search-btn');
-  const searchBox = document.getElementById('search-box');
-
-  searchBtn.addEventListener('click', () => {
-    const query = searchBox.value.trim();
-    if(query) alert("Buscando: " + query);
-  });
-
-  searchBox.addEventListener('keypress', (e) => {
-    if(e.key === 'Enter') searchBtn.click();
-  });
-</script>
-
+<script src="scripts.js"></script>
 </body>
 </html>
