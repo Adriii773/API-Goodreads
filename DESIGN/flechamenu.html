@@ -3,76 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Inicio</title>
-  <style>
-    /* Contenido principal */
-    .contenido {
-      margin-left: 200px; /* espacio para el menú */
-      padding: 20px;
-      transition: margin-left 0.3s;
-    }
-
-    .contenido.menu-oculto {
-      margin-left: 30px; /* deja espacio para la flecha */
-    }
-
-    /* Menú como columna izquierda */
-    nav {
-      width: 200px;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      padding-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      background-color: #eee;
-      transition: transform 0.3s;
-    }
-
-    /* Menú oculto: se mueve a la izquierda, flecha visible */
-    nav.oculto {
-      transform: translateX(-170px);
-    }
-
-    /* Flecha visible en la esquina superior derecha */
-    #toggle-menu {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-      z-index: 100;
-    }
-
-    /* Estilos de los enlaces */
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      width: 100%;
-    }
-
-    nav ul li a {
-      display: block;
-      width: 100%;
-      padding: 10px 20px;
-      text-decoration: none;
-      color: black;
-    }
-
-    nav ul li a:hover {
-      background-color: #ccc;
-    }
-  </style>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
 <!-- Menú directo -->
 <nav>
   <ul>
-    <li><a href="inicio.html">Inicio</a></li>
-    <li><a href="about.html">Sobre mí</a></li>
-    <li><a href="services.html">Servicios</a></li>
+    <li><a href="estanterías.html">Estanterías</a></li>
+    <li><a href="sagas.html">Sagas</a></li>
+    <li><a href="bingo.html">Bingo</a></li>
     <li><a href="contact.html">Contacto</a></li>
   </ul>
   <button id="toggle-menu">❮</button>
@@ -90,11 +30,9 @@
   const contenido = document.querySelector('.contenido');
 
   toggleBtn.addEventListener('click', () => {
-    // Alterna el menú oculto/visible
     nav.classList.toggle('oculto');
     contenido.classList.toggle('menu-oculto');
 
-    // Cambia la flecha según el estado
     toggleBtn.innerHTML = nav.classList.contains('oculto') ? '❯' : '❮';
   });
 </script>

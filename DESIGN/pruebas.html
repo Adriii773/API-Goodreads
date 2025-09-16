@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Inicio</title>
+  <link rel="stylesheet" href="estilomenu.css">
 </head>
 <body>
 
@@ -17,15 +18,18 @@
 </nav>
 
 <!-- Contenido principal -->
-<div>
+<div class="contenido">
   <h1>HOME</h1>
   <p>Aqui saldran recomendaciones.</p>
-  <div id = "resultados"></div>
 </div>
+=======
+  <p>Aquí saldrán recomendaciones.</p>
+>>>>>>> 25379ba8dbfac2c3780626048f1bbf51e1d1fbc9
 
-<div>
+  <!-- Buscador -->
   <input type="text" id="search-box" placeholder="Buscar...">
-  <button id="search-btn">Buscar</button>
+  <button id="search-btn" onclick = "buscar()">Buscar</button>
+  <div id = "resultados"></div>
 </div>
 
 <script>
@@ -34,15 +38,11 @@
 
   searchBtn.addEventListener('click', () => {
     const query = searchBox.value.trim();
-    if(query) {
-      alert("Buscando: " + query);
-    }
+    if(query) alert("Buscando: " + query);
   });
 
   searchBox.addEventListener('keypress', (e) => {
-    if(e.key === 'Enter') {
-      searchBtn.click();
-    }
+    if(e.key === 'Enter') searchBtn.click();
   });
 </script>
 
