@@ -9,30 +9,31 @@
 <body>
 
 <!-- Menú principal -->
-<nav class="menu-principal">
+<nav class="menu-principal oculto">
   <ul>
-     <li class="titulo-menu">Menú</li>
+    <li class="titulo-menu">Menú</li>
     <li><a href="estanterías.html">Estanterías</a></li>
     <li><a href="sagas.html">Sagas</a></li>
     <li><a href="bingo.html">Bingo</a></li>
     <li><a href="contact.html">Contacto</a></li>
   </ul>
-  <button id="toggle-menu">❮</button>
+  <button id="toggle-menu">❯</button> <!-- nota que la flecha apunta a mostrar el menú -->
 </nav>
-
 <!-- Contenido principal -->
-<div class="contenido">
+<div class="contenido menu-oculto">
   <h1>ESTANTERÍAS</h1>
   <p>Contenido de la página de inicio.</p>
 
   <!-- Menú propio de la página -->
-  <nav class="menu-pagina">
-    <ul>
-      <li><a href="currentlyreading.html">Currently reading</a></li>
-      <li><a href="read.html">Read</a></li>
-      <li><a href="wanttoread.html">Want to read</a></li>
-    </ul>
-  </nav>
+<!-- Menú propio de la página -->
+<nav class="menu-pagina">
+  <ul>
+    <li><a href="currentlyreading.html">📖 Currently reading</a></li>
+    <li><a href="read.html">✅ Read</a></li>
+    <li><a href="wanttoread.html">⭐ Want to read</a></li>
+  </ul>
+</nav>
+
 </div>
 
 <script src="scripts.js"></script>
