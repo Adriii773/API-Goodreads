@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
-
-
 <head>
-<link rel="stylesheet" href="style.css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Título de la página</title>
+  <meta charset="UTF-8">
+  <title>Inicio</title>
 </head>
-
-
-
- <!--comentarios random-->
 <body>
-    <!--pruebas para ver como furula cada cosa-->
-<h1 id = "hola">COMIENZO DE LA PÁGINA WEB JIJIJIJIJIJI aka bookweb (como spiderman) jusjusjus</h1>
-<h2>holis</h2>
-<strong>muajajajjaja</strong>
-<p>jusjsujsusjs</p>
 
+<!-- Menú -->
 <nav>
   <ul>
-    <li><a href="inicio.html">Inicio</a></li>
-    <li><a href="about.html">Sobre mí</a></li>
-    <li><a href="services.html">Servicios</a></li>
+    <li><a href="estanterías.html">Estanterías</a></li>
+    <li><a href="sagas.html">Sagas</a></li>
+    <li><a href="bingo.html">Bingo</a></li>
     <li><a href="contact.html">Contacto</a></li>
   </ul>
 </nav>
 
-<div class = "contenedor-botones">
-  <a href="inicio.html" class="boton-circular">+</a>
-  <a href="inicio.html" class="boton-circular">-</a>
-  <a href="inicio.html" class="boton-circular">home</a>
+<!-- Contenido principal -->
+<div>
+  <h1>HOME</h1>
+  <p>Aqui saldran recomendaciones.</p>
 </div>
-<a href="inicio.html" class="boton-circular">+</a>
+
+<div>
+  <input type="text" id="search-box" placeholder="Buscar...">
+  <button id="search-btn">Buscar</button>
+</div>
+
+<script>
+  const searchBtn = document.getElementById('search-btn');
+  const searchBox = document.getElementById('search-box');
+
+  searchBtn.addEventListener('click', () => {
+    const query = searchBox.value.trim();
+    if(query) {
+      alert("Buscando: " + query);
+    }
+  });
+
+  searchBox.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter') {
+      searchBtn.click();
+    }
+  });
+</script>
 
 </body>
-
 </html>
-
-
-
-
