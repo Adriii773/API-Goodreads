@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Inicio</title>
-  <!--<link rel="stylesheet" href="estilomenu.css">-->
+  <link rel="stylesheet" href="estilomenu.css">
 </head>
 <body>
 
-<!-- Menú -->
+<!-- Menú lateral -->
 <nav class="menu-principal oculto">
   <ul>
     <li class="titulo-menu">Menú</li>
@@ -16,22 +16,22 @@
     <li><a href="bingo.html">Bingo</a></li>
     <li><a href="contact.html">Contacto</a></li>
   </ul>
-  <button id="toggle-menu">❯</button> <!-- nota que la flecha apunta a mostrar el menú -->
+  <button id="toggle-menu">❯</button>
 </nav>
 
-<!-- Contenido principal -->
+<!-- Contenedor principal -->
 <div class="contenido menu-oculto">
   <h1>HOME</h1>
-  <p>Aqui saldran recomendaciones.</p>
-</div>
-=======
   <p>Aquí saldrán recomendaciones.</p>
->>>>>>> 25379ba8dbfac2c3780626048f1bbf51e1d1fbc9
 
-  <!-- Buscador -->
-  <input type="text" id="search-box" placeholder="Buscar...">
-  <button id="search-btn" onclick = "buscar()">Buscar</button>
-  <div id = "resultados"></div>
+  <!-- Buscador en la esquina superior derecha -->
+  <div class="buscador">
+    <input type="text" id="search-box" placeholder="Buscar...">
+    <button id="search-btn" onclick="buscar()">Buscar</button>
+  </div>
+
+  <!-- Resultados de búsqueda -->
+  <div id="resultados"></div>
 </div>
 
 <script src="scripts.js"></script>
