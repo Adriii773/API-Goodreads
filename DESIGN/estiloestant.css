@@ -25,6 +25,8 @@
 .contenido {
   margin-left: 210px; /* espacio para menú principal */
   padding: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Menú propio de la página, dentro del contenido */
