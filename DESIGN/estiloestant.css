@@ -33,6 +33,7 @@
   padding: 10px 15px;
 }
 
+/* Botón para ocultar/mostrar menú */
 #toggle-menu {
   position: absolute;
   top: 10px;
@@ -78,9 +79,9 @@
 .menu-pagina ul li {
   flex: 1;
   display: flex;
-  border-top: 2px solid #888;   /* línea superior de la balda */
-  border-bottom: 2px solid #888; /* línea inferior de la balda */
-  box-sizing: border-box;       /* para que el borde no rompa el tamaño */
+  border-top: 2px solid #888;
+  border-bottom: 2px solid #888;
+  box-sizing: border-box;
 }
 
 .menu-pagina ul li a {
@@ -95,7 +96,6 @@
   background-color: #f9f9f9;
 }
 
-/* Hover para las baldas */
 .menu-pagina ul li a:hover {
   background-color: #e0e0e0;
 }
