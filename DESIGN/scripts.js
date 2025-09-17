@@ -1,31 +1,69 @@
-// Espera a que todo el DOM esté cargado
+// scripts.js — robusto, maneja varios menús y evita errores si falta algo
 document.addEventListener('DOMContentLoaded', () => {
+  // Maneja uno o varios menús .menu-principal por si tienes más páginas con la misma estructura
+  const menus = document.querySelectorAll('.menu-principal');
+  const contenido = document.querySelector('.contenido'); // asumimos 1 área principal
 
-  // Selecciona elementos del menú y contenido
-const nav = document.querySelector('.menu-principal');
-const toggleBtn = document.getElementById('toggle-menu');
-const contenido = document.querySelector('.contenido');
+  if (menus.length === 0) {
+    console.log('[menu] No se ha encontrado ningún .menu-principal en esta página.');
+  }
 
-toggleBtn.addEventListener('click', () => {
-  nav.classList.toggle('oculto');
-  contenido.classList.toggle('menu-oculto');
+  menus.forEach((nav, idx) => {
+    // Busca botón toggle dentro del nav (primero por id, si no, cualquier button)
+    let toggleBtn = nav.querySelector('#toggle-menu') || nav.querySelector('button');
 
-  // Cambia la flecha según el estado
-  toggleBtn.textContent = nav.classList.contains('oculto') ? '❯' : '❮';
-});
+    if (!toggleBtn) {
+      console.log(`[menu] En .menu-principal #${idx} no se encontró botón toggle. Añade <button id="toggle-menu">❮</button> dentro del nav.`);
+      return;
+    }
 
-  // Buscador simple
+    // Si no tiene símbolo al cargar, lo ponemos acorde al estado inicial (oculto o no)
+    if (!toggleBtn.textContent.trim()) {
+      toggleBtn.textContent = nav.classList.contains('oculto') ? '❯' : '❮';
+    }
+
+    // Aseguramos que el botón esté visible encima del resto
+    toggleBtn.style.zIndex = '200';
+
+    // Listener (evitar duplicados — primero removemos si acaso)
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nav.classList.toggle('oculto');
+
+      // Ajusta el contenido principal si existe
+      if (contenido) {
+        contenido.classList.toggle('menu-oculto');
+      }
+
+      // Actualiza símbolo de la flecha
+      toggleBtn.textContent = nav.classList.contains('oculto') ? '❯' : '❮';
+    });
+  });
+
+  // Buscador (si existe)
   const searchBtn = document.getElementById('search-btn');
   const searchBox = document.getElementById('search-box');
 
   if (searchBtn && searchBox) {
     searchBtn.addEventListener('click', () => {
       const query = searchBox.value.trim();
-      if(query) alert("Buscando: " + query);
+      if (query) {
+        // aqui puedes reemplazar la alerta por la lógica real
+        alert('Buscando: ' + query);
+      }
     });
 
     searchBox.addEventListener('keypress', (e) => {
-      if(e.key === 'Enter') searchBtn.click();
+      if (e.key === 'Enter') searchBtn.click();
     });
+  } else {
+    // debug pequeño si falta algo
+    if (!searchBtn && !searchBox) {
+      console.log('[search] No se encontró buscador (search-btn/search-box).');
+    } else if (!searchBtn) {
+      console.log('[search] Falta #search-btn.');
+    } else {
+      console.log('[search] Falta #search-box.');
+    }
   }
 });
