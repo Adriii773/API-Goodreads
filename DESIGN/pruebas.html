@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Inicio</title>
   <link rel="stylesheet" href="estilomenu.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -21,6 +22,7 @@
 
 <!-- Contenedor principal -->
 <div class="contenido menu-oculto">
+  <h1>BIENVENIDOS A GOODREADS</h1>
   <h1>HOME</h1>
   <p>Aquí saldrán recomendaciones.</p>
 
@@ -28,10 +30,10 @@
   <div class="buscador">
     <input type="text" id="search-box" placeholder="Buscar...">
     <button id="search-btn" onclick="buscar()">Buscar</button>
-  </div>
+    <div id="resultados" class = "resultados-dropdown"></div>
 
-  <!-- Resultados de búsqueda -->
-  <div id="resultados"></div>
+  </div>
+    <!-- Resultados de búsqueda -->
 </div>
 
 <script src="anim/buscar.js"></script>
