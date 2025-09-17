@@ -1,79 +1,24 @@
 /* ----------------------- */
-/* Menú lateral fijo       */
-/* ----------------------- */
-.menu-principal {
-  width: 200px;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transition: transform 0.3s;
-  background-color: #eee;
-  z-index: 100;
-}
-
-.menu-principal ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu-principal .titulo-menu {
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  padding: 15px 0;
-  background-color: #ddd;
-}
-
-.menu-principal ul li a {
-  display: block;
-  text-decoration: none;
-  color: black;
-  padding: 10px 15px;
-}
-
-/* Botón para ocultar/mostrar menú */
-#toggle-menu {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-size: 20px;
-  color: black;
-  width: 30px;
-  height: 30px;
-}
-
-.menu-principal.oculto {
-  transform: translateX(-170px);
-}
-
-/* ----------------------- */
 /* Contenido principal     */
 /* ----------------------- */
 .contenido {
-  margin-left: 200px;  /* espacio para menú lateral */
+  margin-left: 200px;
   padding: 20px;
-  transition: margin-left 0.3s;
-}
-
-.contenido.menu-oculto {
-  margin-left: 30px;   /* cuando el menú está oculto */
+  box-sizing: border-box;
 }
 
 /* ----------------------- */
 /* Estantería de baldas    */
 /* ----------------------- */
 .menu-pagina ul {
+  width: 100%;
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  box-sizing: border-box;
 }
 
 .menu-pagina ul li {
@@ -87,7 +32,6 @@
   display: flex;
   flex-direction: column;
 
-  /* Fondo tipo madera */
   background: linear-gradient(180deg, #deb887 0%, #c19a6b 100%);
   box-shadow: inset 0 -8px 10px -5px rgba(0,0,0,0.3);
   overflow: visible;
@@ -111,7 +55,7 @@
   z-index: 2;
 }
 
-/* Zona de libros dentro de cada balda */
+/* Zona de libros */
 .libros {
   display: flex;
   flex-wrap: nowrap;
@@ -140,7 +84,7 @@
   width: 80px;
   height: 120px;
   object-fit: cover;
-  border: 2px solid #fff; /* poner border: none si no quieres borde */
+  border: 2px solid #fff;
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   transition: transform 0.2s, box-shadow 0.2s;
@@ -149,8 +93,54 @@
   z-index: 2;
 }
 
-/* Efecto hover en las portadas */
 .libros a img:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* Botón + para añadir libro */
+.add-libro {
+  width: 80px;
+  height: 120px;
+  border: 2px dashed #888;
+  border-radius: 4px;
+  background: #f0f0f0;
+  color: #555;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  flex-shrink: 0; /* que no se encoja */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.add-libro:hover {
+  background: #e0e0e0;
+  color: #000;
+}
+/* Botón de borrar dentro del libro */
+.delete-libro {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.libros a {
+  position: relative; /* necesario para colocar el botón dentro */
 }

@@ -67,3 +67,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+// Función para crear un libro dinámico con botón de borrar
+function crearLibro(src = 'placeholder.jpg') {
+  const newLibro = document.createElement('a');
+  newLibro.href = '#';
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = 'Nuevo libro';
+  newLibro.appendChild(img);
+
+  // Crear botón de borrar
+  const btnBorrar = document.createElement('button');
+  btnBorrar.textContent = '×';
+  btnBorrar.className = 'delete-libro';
+  btnBorrar.addEventListener('click', (e) => {
+    e.preventDefault();
+    const container = newLibro.parentElement;
+    newLibro.remove();
+    guardarLibros(container, Array.from(document.querySelectorAll('.libros')).indexOf(container));
+  });
+  newLibro.appendChild(btnBorrar);
+
+  return newLibro;
+}
+
+// Función para cargar libros guardados de localStorage
+function cargarLibros() {
+  document.querySelectorAll('.libros').forEach((container, index) => {
+    const key = 'estanteria-' + index;
+    const librosGuardados = JSON.parse(localStorage.getItem(key)) || [];
+    librosGuardados.forEach(src => {
+      const libro = crearLibro(src);
+      container.insertBefore(libro, container.querySelector('.add-libro'));
+    });
+  });
+}
+
+// Función para guardar libros en localStorage
+function guardarLibros(container, index) {
+  const srcs = [];
+  // Guardar solo imágenes de libros añadidos dinámicamente (no .original)
+  container.querySelectorAll('a img:not(.original)').forEach(img => srcs.push(img.src));
+  localStorage.setItem('estanteria-' + index, JSON.stringify(srcs));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  cargarLibros(); // cargar libros al abrir la página
+
+  // Añadir nuevo libro al pulsar "+"
+  document.querySelectorAll('.add-libro').forEach((button, index) => {
+    button.addEventListener('click', () => {
+      const container = button.parentElement;
+      const libro = crearLibro();
+      container.insertBefore(libro, button);
+      guardarLibros(container, index);
+    });
+  });
+});
+
