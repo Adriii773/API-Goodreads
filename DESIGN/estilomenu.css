@@ -1,6 +1,4 @@
-/* ----------------------- */
-/* Menú principal lateral  */
-/* ----------------------- */
+/* Menú principal como columna izquierda */
 .menu-principal {
   width: 200px;
   height: 100vh;
@@ -8,26 +6,16 @@
   top: 0;
   left: 0;
   transition: transform 0.3s;
-  background-color: #eee;
-  z-index: 100;
+  background-color: #eee; /* opcional */
 }
 
+/* Lista de enlaces del menú principal */
 .menu-principal ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Título “Menú” centrado y más grande */
-.menu-principal .titulo-menu {
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  padding: 15px 0;
-  background-color: #ddd;
-}
-
-/* Enlaces del menú principal */
 .menu-principal ul li a {
   display: block;
   text-decoration: none;
@@ -35,93 +23,61 @@
   padding: 10px 15px;
 }
 
+.titulo-menu {
+  font-size: 20px;     /* más grande */
+  font-weight: bold;   /* en negrita */
+  text-align: center;  /* centrado */
+  padding: 15px 0;     /* espacio arriba y abajo */
+  background-color: #ddd; /* opcional: resalta el fondo */
+}
+
+
 /* Botón para ocultar/mostrar menú */
 #toggle-menu {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 10px; /* Flecha en la esquina superior derecha */
   cursor: pointer;
   background: none;
   border: none;
   font-size: 20px;
-  color: black;
-  width: 30px;
-  height: 30px;
+  color: black;      /* 🔹 asegura que se vea el icono */
+  width: 30px;       /* 🔹 tamaño mínimo */
+  height: 30px;      /* 🔹 tamaño mínimo */
 }
 
-/* Menú oculto */
+
+/* Menú oculto: se mueve a la izquierda */
 .menu-principal.oculto {
   transform: translateX(-170px);
 }
 
-/* ----------------------- */
-/* Contenido principal     */
-/* ----------------------- */
+/* Contenido a la derecha del menú */
 .contenido {
   margin-left: 200px;
   padding: 20px;
   transition: margin-left 0.3s;
 }
 
+/* Ajuste cuando el menú está oculto */
 .contenido.menu-oculto {
   margin-left: 30px;
 }
 
-/* ----------------------- */
-/* Menú propio de la página (estantería de baldas) */
-/* ----------------------- */
+/* Menú propio de la página, debajo del contenido */
+.menu-pagina {
+  margin-top: 20px;
+}
+
 .menu-pagina ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.menu-pagina ul li {
-  flex: 1;
-  display: flex;
-  border-top: 2px solid #888;
-  border-bottom: 2px solid #888;
-  box-sizing: border-box;
 }
 
 .menu-pagina ul li a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  display: block;
   text-decoration: none;
   color: black;
-  font-size: 22px;
-  background-color: #f9f9f9;
-}
-
-.menu-pagina ul li a:hover {
-  background-color: #e0e0e0;
-}
-
-/* ----------------------- */
-/* Buscador en esquina superior derecha */
-/* ----------------------- */
-.buscador {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 5px;
-  z-index: 200; /* encima del menú si se superponen */
-}
-
-.buscador input {
   padding: 5px 10px;
-  font-size: 14px;
-}
-
-.buscador button {
-  padding: 5px 10px;
-  font-size: 14px;
-  cursor: pointer;
 }
