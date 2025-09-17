@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!-- Menú principal -->
+<!-- Menú principal lateral -->
 <nav class="menu-principal oculto">
   <ul>
     <li class="titulo-menu">Menú</li>
@@ -26,35 +26,41 @@
 
   <nav class="menu-pagina">
     <ul>
+      <!-- Currently reading -->
       <li>
         <a href="currentlyreading.html" class="titulo-balda">📖 Currently reading</a>
         <div class="libros">
-          <a href="libro1.html"><img src="libro1.jpg" alt="Libro 1"></a>
-          <a href="libro2.html"><img src="libro2.jpg" alt="Libro 2"></a>
-          <a href="libro3.html"><img src="libro3.jpg" alt="Libro 3"></a>
+          <a href="libro1.html"><img src="libro1.jpg" alt="Libro 1" class="original"></a>
+          <a href="libro2.html"><img src="libro2.jpg" alt="Libro 2" class="original"></a>
+          <button class="add-libro">+</button>
         </div>
       </li>
 
+      <!-- Read -->
       <li>
         <a href="read.html" class="titulo-balda">✅ Read</a>
         <div class="libros">
-          <a href="libro4.html"><img src="libro4.jpg" alt="Libro 4"></a>
-          <a href="libro5.html"><img src="libro5.jpg" alt="Libro 5"></a>
+          <a href="libro3.html"><img src="libro3.jpg" alt="Libro 3" class="original"></a>
+          <a href="libro4.html"><img src="libro4.jpg" alt="Libro 4" class="original"></a>
+          <button class="add-libro">+</button>
         </div>
       </li>
 
+      <!-- Want to read -->
       <li>
         <a href="wanttoread.html" class="titulo-balda">⭐ Want to read</a>
         <div class="libros">
-          <a href="libro6.html"><img src="libro6.jpg" alt="Libro 6"></a>
-          <a href="libro7.html"><img src="libro7.jpg" alt="Libro 7"></a>
-          <a href="libro8.html"><img src="libro8.jpg" alt="Libro 8"></a>
+          <a href="libro5.html"><img src="libro5.jpg" alt="Libro 5" class="original"></a>
+          <a href="libro6.html"><img src="libro6.jpg" alt="Libro 6" class="original"></a>
+          <button class="add-libro">+</button>
         </div>
       </li>
     </ul>
   </nav>
 </div>
 
+<!-- Se enlaza el JS externo -->
 <script src="scripts.js"></script>
+
 </body>
 </html>
