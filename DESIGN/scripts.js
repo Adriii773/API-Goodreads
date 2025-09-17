@@ -126,3 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+const celdas = document.querySelectorAll('.tabla-bingo .celda');
+
+celdas.forEach(celda => {
+  celda.addEventListener('click', () => {
+    celda.classList.toggle('activo'); // activa/desactiva el círculo
+  });
+});
+

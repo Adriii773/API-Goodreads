@@ -1,0 +1,49 @@
+.tabla-bingo {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* ahora 5 columnas */
+  width: 100%;
+  height: calc(100vh - 100px);
+  gap: 2px;
+}
+
+.celda {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 1px solid black;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  font-weight: bold;
+}
+
+.marcador {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background-color: rgb(204, 101, 204);
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.contenido-celda {
+  position: relative;
+  z-index: 1;
+  display: flex;             /* flex para centrar el texto */
+  justify-content: center;   /* centrado horizontal */
+  align-items: center;       /* centrado vertical */
+  text-align: center;        /* por si hay varias líneas */
+  width: 100%;
+  height: 100%;
+}
+
+.celda.activo .marcador {
+  opacity: 0.5;
+}

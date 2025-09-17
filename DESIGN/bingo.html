@@ -4,71 +4,63 @@
   <meta charset="UTF-8">
   <title>Tabla interactiva</title>
   <link rel="stylesheet" href="estilomenu.css">
+  <link rel="stylesheet" href="estilobingo.css">
 </head>
-
 <body>
 
   <!-- Menú principal -->
-<nav class="menu-principal oculto">
-  <ul>
-    <li class="titulo-menu">Menú</li>
-    <li><a href="estanterías.html">Estanterías</a></li>
-    <li><a href="sagas.html">Sagas</a></li>
-    <li><a href="bingo.html">Bingo</a></li>
-    <li><a href="contact.html">Contacto</a></li>
-  </ul>
-  <button id="toggle-menu">❯</button> <!-- nota que la flecha apunta a mostrar el menú -->
-</nav>
+  <nav class="menu-principal oculto">
+    <ul>
+      <li class="titulo-menu">Menú</li>
+      <li><a href="estanterías.html">Estanterías</a></li>
+      <li><a href="sagas.html">Sagas</a></li>
+      <li><a href="bingo.html">Bingo</a></li>
+      <li><a href="contact.html">Contacto</a></li>
+    </ul>
+    <button id="toggle-menu">❯</button>
+  </nav>
   
-  <!-- Contenido principal -->
-  <div class="contenido menu-oculto">
-    <h1>BINGO LITERARIO</h1>
+<div class="contenido menu-oculto">
+  <h1>BINGO LITERARIO</h1>
 
-    <table border="1" cellpadding="10">
-      <tr>
-        <th>Nombre</th>
-        <th>Edad</th>
-        <th>Ciudad</th>
-      </tr>
-      <tr>
-        <td style="background-color: white;">Ana</td>
-        <td style="background-color: white;">25</td>
-        <td style="background-color: white;">Madrid</td>
-      </tr>
-      <tr>
-        <td style="background-color: white;">Carlos</td>
-        <td style="background-color: white;">30</td>
-        <td style="background-color: white;">Barcelona</td>
-      </tr>
-      <tr>
-        <td style="background-color: white;">Lucía</td>
-        <td style="background-color: white;">28</td>
-        <td style="background-color: white;">Valencia</td>
-      </tr>
-    </table>
-  </div>
+<div class="tabla-bingo">
+  <!-- Fila 1 -->
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">No me hables. Si alguien me busca, estaré llorando en una esquina</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">¿y como sigo con mi vida despues de leer esto?</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Quiero leer hasta la lista de la compra de este autor</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Lo lei por el fomo (no lo hagais)</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Yo solo quiero que sean felices</span></div>
 
-  <!-- Script para el menú -->
+  <!-- Fila 2 -->
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Voy a fingir que los últimos capitulos no existen</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Mi nueva personalidad hasta quedarme sin amigos</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Cómo separo la obra del autor</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Voy a empezar a ir al gym, por si las moscas</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">¿Alguen más conoce este libro?</span></div>
+
+  <!-- Fila 3 -->
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Que alguien le compre una personalidad a los protas</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Puedo leer este libro hasta con los ojos cerrados</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">dibujito en proceso</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Donde encuentro algo como lo que tienen ellos</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">No mamá, no es una fase</span></div>
+
+  <!-- Fila 4 -->
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Me da miedo el mar, pero ahora quiero ser pirata</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Si no sobrevivie, pienso arrasar el planeta</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Terminarlo requirió sangre, sudor y lágrimas</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Necesito más, voy a leer fanfics</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">La espera mereció la pena</span></div>
+
+  <!-- Fila 5 -->
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">¿Por qué no hay 1500 paginas más de esta historia?</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">¿Es una mala idea hacerme un tattoo?</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Las red flags no me asustan, tengo daltonismo</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">My guilty pleasure</span></div>
+  <div class="celda"><span class="marcador"></span><span class="contenido-celda">Nuevo crush desbloqueado</span></div>
+</div>
+
+
   <script src="scripts.js"></script>
-
-  <!-- Script para la tabla -->
-  <script>
-    const celdas = document.querySelectorAll('td');
-
-    celdas.forEach(celda => {
-      celda.dataset.colorOriginal = celda.style.backgroundColor;
-
-      celda.addEventListener('click', () => {
-        if (celda.classList.contains('seleccionada')) {
-          celda.style.backgroundColor = celda.dataset.colorOriginal;
-          celda.classList.remove('seleccionada');
-        } else {
-          celda.style.backgroundColor = 'yellow';
-          celda.classList.add('seleccionada');
-        }
-      });
-    });
-  </script>
-
 </body>
 </html>
