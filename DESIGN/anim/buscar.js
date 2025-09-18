@@ -5,7 +5,7 @@ const searchBox = document.getElementById("search-box");
 const resultadosDiv = document.getElementById("resultados");
 
 // ===========================================
-// 2️⃣ Función para buscar en Open Library
+// 2️⃣ Función para buscar en Open Librarypython 
 // ===========================================
 async function buscarOpenLibrary(query) {
   const queries = [query, query.toLowerCase().replace("seis de cuervos", "six of crows")];

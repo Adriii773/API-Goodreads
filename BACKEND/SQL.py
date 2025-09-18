@@ -40,6 +40,7 @@ libros_para_insertar = [
     {"titulo": "La odisea", "autor": "Homero", "anio": -800},
 ]
 
+
 # 4️⃣ Insertar libros automáticamente
 for libro in libros_para_insertar:
     cursor.execute(
@@ -52,3 +53,4 @@ conn.commit()
 conn.close()
 
 print("¡Libros insertados correctamente!")
+
