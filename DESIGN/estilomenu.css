@@ -61,7 +61,9 @@
 
 /* Ajuste cuando el menú está oculto */
 .contenido.menu-oculto {
+  font-family: 'Balthazar', serif;
   margin-left: 30px;
+  font-size: 30px;
 }
 
 /* Menú propio de la página, debajo del contenido */
