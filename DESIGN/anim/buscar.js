@@ -5,34 +5,7 @@ const searchBox = document.getElementById("search-box");
 const resultadosDiv = document.getElementById("resultados");
 
 // ===========================================
-// 2️⃣ Función para buscar en Google Books
-// ===========================================
-async function buscarGoogleBooks(query) {
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=10`;
-  try {
-    const resp = await fetch(url);
-    if (!resp.ok) return [];
-    const data = await resp.json();
-    if (!data.items) return [];
-
-    return data.items.map(item => {
-      const info = item.volumeInfo;
-      return {
-        titulo: info.title || "Desconocido",
-        autor: info.authors ? info.authors.join(", ") : "Desconocido",
-        portada: info.imageLinks?.thumbnail
-          ? info.imageLinks.thumbnail.replace("http:", "https:")
-          : "https://via.placeholder.com/100x150?text=Sin+Portada"
-      };
-    });
-  } catch (e) {
-    console.error("Error Google Books:", e);
-    return [];
-  }
-}
-
-// ===========================================
-// 3️⃣ Función para buscar en Open Library
+// 2️⃣ Función para buscar en Open Library
 // ===========================================
 async function buscarOpenLibrary(query) {
   const queries = [query, query.toLowerCase().replace("seis de cuervos", "six of crows")];
@@ -71,21 +44,18 @@ async function buscarOpenLibrary(query) {
 }
 
 // ===========================================
-// 4️⃣ Función para calcular relevancia
+// 3️⃣ Función para calcular relevancia
 // ===========================================
 function calcularRelevancia(libro, query) {
   const queryLower = query.toLowerCase().trim();
   const titleLower = libro.titulo.toLowerCase().trim();
 
-  // 1️⃣ Coincidencia exacta completa
   if (titleLower === queryLower) return 100;
 
-  // 2️⃣ Todas las palabras del query están en el título
   const queryWords = queryLower.split(" ").filter(w => w);
   const allWordsMatch = queryWords.every(word => titleLower.includes(word));
   if (allWordsMatch) return 80;
 
-  // 3️⃣ Coincidencia parcial por palabra
   let score = 0;
   queryWords.forEach(word => {
     if (titleLower.includes(word)) score += 10;
@@ -95,7 +65,7 @@ function calcularRelevancia(libro, query) {
 }
 
 // ===========================================
-// 5️⃣ Función principal de búsqueda
+// 4️⃣ Función principal de búsqueda
 // ===========================================
 async function buscar() {
   const query = searchBox.value.trim();
@@ -107,16 +77,8 @@ async function buscar() {
   }
 
   try {
-    let resultados = [];
-
-    // 🔹 Buscar primero en Google Books
-    const googleResults = await buscarGoogleBooks(query);
-    if (googleResults.length > 0) {
-      resultados = googleResults;
-    } else {
-      // 🔹 Si no hay resultados, buscar en Open Library
-      resultados = await buscarOpenLibrary(query);
-    }
+    // 🔹 Buscar en Open Library
+    let resultados = await buscarOpenLibrary(query);
 
     // 🔹 Filtrar títulos que contengan alguna palabra del query
     const queryWords = query.toLowerCase().split(" ").filter(w => w);
@@ -179,7 +141,7 @@ async function buscar() {
 }
 
 // ===========================================
-// 6️⃣ Eventos
+// 5️⃣ Eventos
 // ===========================================
 let timeoutId;
 searchBox.addEventListener("input", () => {
