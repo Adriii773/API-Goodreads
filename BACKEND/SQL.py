@@ -19,7 +19,8 @@ libros_para_insertar = [
     {"titulo": "Seis de cuervos", "autor": "Leigh Bardugo", "anio": 2015},
     {"titulo": "Sombra y Hueso", "autor": "Leigh Bardugo", "anio": 2012},
     {"titulo": "El nombre del viento", "autor": "Patrick Rothfuss", "anio": 2007},
-]
+    {"titulo": "Los juegos del hambre", "autor": "Suzanne Collins", "anio": 2008},
+    
 
 # 4️⃣ Insertar libros automáticamente
 for libro in libros_para_insertar:
