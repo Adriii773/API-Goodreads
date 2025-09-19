@@ -1,0 +1,48 @@
+/* Contenedor principal que ocupa toda la pantalla y centra su contenido */
+.contenido {
+  margin-left: 100px; /* espacio para el menú lateral fijo */
+  height: 100vh;       /* altura completa de la ventana */
+  display: flex;
+  justify-content: center; /* centra horizontalmente el contenedor ovalado */
+  align-items: center;     /* centra verticalmente */
+  position: relative;
+}
+
+/* Contenedor del óvalo PNG */
+.contenedor-ovalado {
+  width: 700px;     /* ancho del PNG */
+  height: 600px;    /* alto del PNG */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente título + buscador */
+  align-items: center;     /* centra horizontalmente título + buscador */
+  text-align: center;
+}
+
+/* Imagen PNG de fondo */
+.contenedor-ovalado img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ajusta sin deformar */
+  z-index: 0;          /* detrás del contenido */
+}
+
+/* Título centrado */
+.contenedor-ovalado h1 {
+  z-index: 1;         /* por encima de la imagen */
+  color: #3e2f1c;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px #bfa77f;
+}
+
+/* Buscador centrado */
+.contenedor-ovalado .buscador {
+  position: relative;
+  z-index: 1;
+  width: 70%;        /* ancho relativo al contenedor */
+}

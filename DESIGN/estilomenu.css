@@ -25,13 +25,6 @@
   padding: 10px 15px;
 }
 
-/* Contenido a la derecha del menú */
-.contenido {
-  margin-left: 200px;  /* deja espacio para el menú fijo */
-  padding: 20px;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
 
 
 /* Menú propio de la página, debajo del contenido */

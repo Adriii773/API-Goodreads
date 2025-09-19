@@ -5,6 +5,7 @@
   <title>Inicio</title>
   <link rel="stylesheet" href="estilomenu.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="diseñolibro.css">
   <link href="https://fonts.googleapis.com/css2?family=Balthazar&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -21,18 +22,21 @@
 
 <!-- Contenedor principal -->
 <div class="contenido">
-  <h1>Bienvenidos a Alejandría</h1>
-  <p>Aquí saldrán recomendaciones.</p>
+  <div class="contenedor-ovalado">
+    <!-- Imagen decorativa de fondo -->
+    <img src="iconos/ovalopng.png" style="width: 700px; height: 600px;">
 
-  <!-- Buscador en la esquina superior derecha -->
-  <div class="buscador">
-    <input type="text" id="search-box" placeholder="Buscar...">
-    <button id="search-btn" onclick="buscar()">Buscar</button>
-    <div id="resultados" class = "resultados-dropdown"></div>
+    <h2>Bienvenidos a Alejandría</h2>
 
+    <!-- Buscador -->
+    <div class="buscador">
+      <input type="text" id="search-box" placeholder="Buscar...">
+      <button id="search-btn" onclick="buscar()">Buscar</button>
+      <div id="resultados" class="resultados-dropdown"></div>
+    </div>
   </div>
-    <!-- Resultados de búsqueda -->
 </div>
+
 
 <script src="anim/buscar.js"></script>
 <script src="scripts.js"></script>
