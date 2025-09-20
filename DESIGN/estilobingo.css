@@ -1,29 +1,59 @@
-.tabla-bingo {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* ahora 5 columnas */
-  width: 100%;
-  height: calc(100vh - 100px);
-  gap: 2px;
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;   /* centra horizontalmente */
+  align-items: center;       /* centra verticalmente */
+  height: 100vh;
+  background-color: rgb(230, 228, 170);
 }
 
+/* Contenedor principal (ajustado para el menú fijo a la izquierda) */
+.contenido {
+  margin-left: 120px; /* espacio para el menú */
+  flex: 1;
+  display: flex;
+  flex-direction: column;  /* título arriba, tabla abajo */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;               /* espacio entre título y tabla */
+}
+
+/* Título del bingo */
+.contenido h1 {
+  font-family: 'Comic Neue', cursive;
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Tabla bingo más pequeña y centrada */
+.tabla-bingo {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 80%;           /* ancho relativo al contenedor */
+  max-width: 900px;     /* ancho máximo */
+  gap: 10px;            /* separación entre casillas */
+}
 .celda {
   position: relative;
-  aspect-ratio: 1 / 1;
-  border: 1px solid black;
+  aspect-ratio: 1.5 / 1;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: white; /* celdas en blanco */
   font-weight: bold;
+  border-radius: 15px;     /* esquinas redondeadas */
+  /* border eliminado */
 }
+
 
 .marcador {
   position: absolute;
   width: 70%;
   height: 70%;
   border-radius: 50%;
-  background-color: rgb(204, 101, 204);
+  background-color: #00387c;
   opacity: 0;
   top: 50%;
   left: 50%;
@@ -36,14 +66,31 @@
 .contenido-celda {
   position: relative;
   z-index: 1;
-  display: flex;             /* flex para centrar el texto */
-  justify-content: center;   /* centrado horizontal */
-  align-items: center;       /* centrado vertical */
-  text-align: center;        /* por si hay varias líneas */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   width: 100%;
   height: 100%;
+
+  font-family: 'Comic Neue', cursive; /* fuente más mona */
+  font-size: 16px;                   /* ajusta según se vea mejor */
+  line-height: 1.3;                   /* espacio entre líneas */
 }
+
 
 .celda.activo .marcador {
   opacity: 0.5;
+}
+
+.foto-celda {
+  background-color: rgb(230, 228, 170); /* mantiene el fondo blanco como las otras */
+  overflow: hidden;        /* asegura que la imagen no sobresalga */
+}
+
+.foto-celda img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px; /* igual que las demás esquinas */
 }
