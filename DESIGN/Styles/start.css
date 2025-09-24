@@ -1,0 +1,106 @@
+/* ===== Body y centrado principal ===== */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Balthazar', serif;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* ===== Contenedor del óvalo más pequeño ===== */
+.contenedor-ovalado {
+  width: 60vw;            /* ancho reducido */
+  height: 50vh;           /* alto reducido */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+}
+
+/* ===== Imagen de óvalo ===== */
+.contenedor-ovalado img {
+  width: 100%;            /* ajustada al nuevo tamaño */
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* ===== Contenido centrado sobre la imagen ===== */
+.contenido-central {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 1;             /* encima de la imagen */
+}
+
+/* ===== Título ===== */
+h2 {
+  margin-bottom: 20px;
+  font-size: 36px;
+  color: #111;
+}
+
+/* ===== Caja Start más pequeña y elegante ===== */
+/* ===== Caja Start actualizada ===== */
+.start-box {
+  width: 180px;
+  height: 70px;
+  background-color: #e8d9ac; /* nuevo color */
+  color: #ffffff;            /* texto blanco */
+  border: none;              /* sin borde */
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.35); /* sombra más marcada */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.start-box:hover {
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4); /* sombra más fuerte al hover */
+  transform: translateY(-3px);             /* pequeño levantamiento */
+}
+
+
+
+/* ===== Menú lateral fijo ===== */
+.menu-principal {
+  width: 100px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #eee;
+  padding-top: 20px;
+  box-shadow: 3px 0 6px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+.menu-principal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-principal ul li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 10px 15px;
+}
+
+.menu-principal ul li a:hover {
+  background-color: #ddd;
+}
