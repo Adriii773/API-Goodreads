@@ -6,14 +6,15 @@
   width: 100%;  
   z-index: 1000;
   display: flex;
+  gap: 5px; /* espacio entre pestañas */
   justify-content: space-around; /* distribuye las pestañas en cuartos */
   background-color: transparent;
 }
 
 /* Estilo de cada pestaña */
 .tab {
-  width: 25%;                   /* un cuarto del ancho */
-  max-width: 220px;             /* opcional */
+  width: 100%;                   /* un cuarto del ancho */
+  max-width: 420px;             /* opcional */
   height: 60px;                 /* más alta */
   text-align: center;
   line-height: 60px;            /* centra verticalmente el texto */
@@ -42,8 +43,8 @@
 }
 
 .tabelegida {
-  width: 25%;                   /* un cuarto del ancho */
-  max-width: 220px;             /* opcional */
+  width: 100%;                   /* un cuarto del ancho */
+  max-width: 420px;             /* opcional */
   height: 60px;                 /* más alta */
   text-align: center;
   line-height: 60px;            /* centra verticalmente el texto */
