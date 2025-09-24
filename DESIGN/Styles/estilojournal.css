@@ -1,0 +1,61 @@
+/* 1. Centramos todo en la pantalla */
+body {
+  display: flex;                     /* Flexbox para centrar */
+  justify-content: center;           /* Horizontalmente */
+  align-items: center;               /* Verticalmente */
+  height: 100vh;                     /* Toda la altura de la pantalla */
+  background: #eee;                  /* Fondo gris claro */
+  font-family: sans-serif;           /* Fuente simple */
+}
+
+/* 2. El cuaderno como "carpeta" */
+.cuaderno {
+  display: flex;                     /* Dos páginas una al lado de la otra */
+  width: calc(100vw - 225px);                      /* Ancho total */
+  height: 100%;                     /* Alto total */
+  border: 2px solid #333;            /* Borde oscuro para el marco */
+  background: #fafafa;               /* Fondo blanco-gris */
+  box-shadow: 0 0 20px rgba(0,0,0,0.3); /* Sombra para que flote */
+  overflow: hidden;                  /* Nada sobresale */
+  position: relative;                /* Para colocar los botones dentro */
+}
+
+/* 3. Estilo de cada página */
+.pagina {
+  flex: 1;                           /* Cada página ocupa la mitad */
+  padding: 20px;                     /* Espacio interior */
+  border-right: 1px solid #ccc;      /* Línea que separa las páginas */
+  background: #fff;                  /* Fondo blanco */
+  line-height: 1.6;                  /* Espaciado de texto */
+  overflow-y: auto;                  /* Scroll si hay mucho texto */
+}
+
+/* La última página no necesita borde */
+.pagina:last-child {
+  border-right: none;
+}
+
+/* 4. Controles de navegación */
+.controles {
+  position: absolute;                /* Los ponemos flotando dentro del cuaderno */
+  bottom: 10px;                      /* Pegado abajo */
+  left: 50%;                         /* Centro horizontal */
+  transform: translateX(-50%);       /* Ajuste para centrar exacto */
+  display: flex;                     /* Los botones en fila */
+  gap: 10px;                         /* Espacio entre botones */
+}
+
+/* 5. Botones */
+button {
+  padding: 8px 15px;                 /* Tamaño */
+  border: none;                      /* Sin borde clásico */
+  background: #333;                  /* Fondo oscuro */
+  color: white;                      /* Texto blanco */
+  border-radius: 5px;                /* Esquinas redondeadas */
+  cursor: pointer;                   /* Cursor de mano */
+  transition: background 0.3s;       /* Suavizar cambios */
+}
+
+button:hover {
+  background: #555;                  /* Cambio de color al pasar el mouse */
+}

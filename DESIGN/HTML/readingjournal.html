@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Reading journal</title>
   <link rel="stylesheet" href="../Styles/estilomenu.css">
+  <link rel="stylesheet" href="../Styles/estilojournal.css">
 </head>
 <body>
 
@@ -19,5 +20,46 @@
     <li><a href="../HTML/bingo.html"><img src="../Icons/juegos.png" style="width: 50px; height: 60px;"></a></li>
   </ul>
 </nav>
+
+ <div class="cuaderno">
+    <div class="pagina" id="pagina-izq">Página izquierda</div>
+    <div class="pagina" id="pagina-der">Página derecha</div>
+    <div class="controles">
+      <button onclick="anterior()">⟵ Anterior</button>
+      <button onclick="siguiente()">Siguiente ⟶</button>
+    </div>
+  </div>
+
+  <script>
+    const paginas = [
+      ["Bienvenido a tu cuaderno", "Escribe tus notas aquí →"],
+      ["Página 2 izquierda", "Página 2 derecha"],
+      ["Página 3 izquierda", "Página 3 derecha"]
+    ];
+
+    let indice = 0;
+
+    function mostrarPaginas() {
+      document.getElementById("pagina-izq").innerText = paginas[indice][0];
+      document.getElementById("pagina-der").innerText = paginas[indice][1];
+    }
+
+    function siguiente() {
+      if (indice < paginas.length - 1) {
+        indice++;
+        mostrarPaginas();
+      }
+    }
+
+    function anterior() {
+      if (indice > 0) {
+        indice--;
+        mostrarPaginas();
+      }
+    }
+
+    mostrarPaginas();
+  </script>
+
 </body>
 </html>
