@@ -2,22 +2,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const addBaldaBtn = document.getElementById("add-balda");
   const listaBaldas = document.querySelector(".menu-pagina ul");
 
-  // Función para añadir libros en cualquier balda
+  // -------------------------------
+  // Crear libro
+  // -------------------------------
+  function crearLibro(src = 'libro-placeholder.jpg') {
+    const newLibro = document.createElement('a');
+    newLibro.href = '#';
+    newLibro.innerHTML = `<img src="${src}" alt="Nuevo libro">`;
+
+    // Botón de borrar libro
+    const btnBorrar = document.createElement('button');
+    btnBorrar.textContent = '×';
+    btnBorrar.className = 'delete-libro';
+    btnBorrar.addEventListener('click', (e) => {
+      e.preventDefault();
+      newLibro.remove();
+    });
+
+    newLibro.appendChild(btnBorrar);
+    return newLibro;
+  }
+
+  // -------------------------------
+  // Activar botón "+"
+  // -------------------------------
   function activarBotonAddLibro(boton) {
-    boton.addEventListener("click", () => {
-      const contenedorLibros = boton.parentElement;
+    // Clonar para remover listeners previos
+    const newBtn = boton.cloneNode(true);
+    boton.replaceWith(newBtn);
 
-      // Crear portada simulada
-      const nuevoLibro = document.createElement("a");
-      nuevoLibro.href = "#";
-      nuevoLibro.innerHTML = `<img src="libro-placeholder.jpg" alt="Nuevo libro">`;
-
-      // Insertar antes del botón "+"
-      contenedorLibros.insertBefore(nuevoLibro, boton);
+    newBtn.addEventListener("click", () => {
+      const contenedorLibros = newBtn.parentElement;
+      const libro = crearLibro();
+      contenedorLibros.insertBefore(libro, newBtn);
     });
   }
 
-  // Función para eliminar balda
+  // -------------------------------
+  // Activar botón eliminar balda
+  // -------------------------------
   function activarBotonDeleteBalda(boton) {
     boton.addEventListener("click", () => {
       const balda = boton.parentElement;
@@ -25,12 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Botón para añadir balda
+  // -------------------------------
+  // Añadir balda nueva
+  // -------------------------------
   addBaldaBtn.addEventListener("click", () => {
-    // Crear nueva balda
     const nuevaBalda = document.createElement("li");
 
-    // Estructura interna
     nuevaBalda.innerHTML = `
       <button class="delete-balda">×</button>
       <div class="libros">
@@ -38,17 +61,17 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // Insertar en el UL
     listaBaldas.appendChild(nuevaBalda);
 
-    // Activar funciones de la nueva balda
+    // Activar botones de la balda nueva
     activarBotonAddLibro(nuevaBalda.querySelector(".add-libro"));
     activarBotonDeleteBalda(nuevaBalda.querySelector(".delete-balda"));
   });
 
-  // Activar botones "+" de las baldas iniciales
-  document.querySelectorAll(".menu-pagina ul li").forEach(li => {
-    const addLibro = li.querySelector(".add-libro");
-    if (addLibro) activarBotonAddLibro(addLibro);
+  // -------------------------------
+  // Activar botones "+" de baldas iniciales
+  // -------------------------------
+  document.querySelectorAll(".menu-pagina ul li .add-libro").forEach(btn => {
+    activarBotonAddLibro(btn);
   });
 });
