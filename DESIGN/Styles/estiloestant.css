@@ -100,28 +100,21 @@ body {
 /* ----------------------- */
 .libros {
   display: flex;
-  justify-content: space-between; /* repartir espacio horizontal */
-  align-items: flex-end;          /* todos alineados abajo */
-  gap: 10px;
+  justify-content: flex-start; /* todos los elementos pegados a la izquierda */
+  align-items: flex-end;
+  gap: 10px; /* separación entre libros */
+  flex-wrap: wrap; /* opcional: para que salten de línea si hay muchos libros */
   margin-top: 10px;
   padding: 0 10px;
-  line-height: 0;
-  z-index: 2;
-  overflow: hidden; /* no scroll horizontal */
+  overflow: hidden;
 }
 
 /* Cada celda de libro ocupa el mismo ancho */
 .libros a {
-  position: relative;
-  flex: 1; /* cada libro ocupa el mismo espacio horizontal */
-  display: flex;
-  justify-content: center; /* portada centrada en la celda */
-  align-items: flex-end;
+  position: relative;     /* clave: botón relativo al libro */
+  display: inline-block;  /* ocupa solo el ancho de la portada */
+  flex: 0 0 auto;
   text-decoration: none;
-  background: none;
-  padding: 0;
-  margin: 0;
-  border: none;
 }
 
 /* Imágenes de las portadas */
@@ -206,24 +199,24 @@ body {
 /* ----------------------- */
 /* Botón de borrar dentro del libro */
 .delete-libro {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  background: rgba(255,255,255,0.9);
-  border: none;
-  border-radius: 50%;
+  position: absolute; 
+  top: 2px; 
+  right: 2px; 
   width: 20px;
   height: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
   color: red;
   font-weight: bold;
-  cursor: pointer;
   font-size: 14px;
   line-height: 18px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
 }
+
 
 /* Botón + para añadir balda en esquina superior derecha */
 .add-balda {
