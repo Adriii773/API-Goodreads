@@ -77,12 +77,12 @@
     display: block;
 }
 
-.resultados-dropdown li {
+#resultados-dropdown li {
     padding: 5px 10px;
     cursor: pointer;
 }
 
-.resultados-dropdown li:hover {
+#resultados-dropdown li:hover {
     background-color: #f0f0f0;
 
 
