@@ -1,127 +1,165 @@
+/* ===== Estilos generales ===== */
 html, body {
-  font-family: 'Balthazar', serif;
-  height: 100vh;
-  margin: 0;
-  background: #f0f0f0;
-  overflow: hidden;
-  display: flex;
-  justify-content: flex-end; /* portada pegada a la derecha */
-  align-items: center;
+    font-family: 'Balthazar', serif;
+    height: 100vh;
+    margin: 0;
+    background: #f4f4f5; /* fondo suave elegante */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Contenedor de la portada */
+/* ===== Contenedor de la portada ===== */
 .right-half {
-  perspective: 1500px;
-  position: relative;
-  z-index: 2;
+    perspective: 1500px;
+    position: absolute;
+    left: 50%;           /* borde izquierdo en el centro */
+    z-index: 2;
 }
 
-/* Portada */
+/* ===== Portada ===== */
 .portada {
-  width: 45vw;
-  height: 90vh;
-  position: relative;
-  transform-origin: left;
-  transition: transform 1s ease;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  border: 3px solid #8B4513;
-  box-sizing: border-box;
-  border-radius: 8px;
-  z-index: 2;
+    width: 35vw;          
+    height: 80vh;
+    transform-origin: left;   
+    transition: transform 1s ease;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    border: 3px solid #9c6597;  /* borde elegante gris oscuro */
+    box-sizing: border-box;
+    border-radius: 12px;
+    z-index: 2;
 }
 
-/* Cara frontal */
+/* Cara frontal de la portada */
 .portada .front {
-  width: 100%;
-  height: 100%;
-  background: #8B4513;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  backface-visibility: hidden;
-  font-size: 2em;
-  text-align: center;
-  border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    background: #9c6597;  /* color elegante oscuro */
+    color: #f8f9fa;       /* texto claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    font-size: 2em;
+    text-align: center;
+    border-radius: 12px;
 }
 
-/* Cara trasera */
+/* Cara trasera de la portada */
 .portada .back {
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-  border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;   /* página izquierda blanca */
+    color: #9c6597;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    border-radius: 12px;
 }
 
-/* Gira portada */
+/* Animación al girar */
 .portada.abierta {
-  transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
 }
 
-/* Contenedor del libro */
+/* ===== Contenedor del libro ===== */
 .book {
-  width: 90vw;
-  height: 90vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  z-index: 1;
-  border: 3px solid #8B4513;
-  box-sizing: border-box;
-  border-radius: 8px;
-  overflow: hidden;
-  visibility: hidden; /* oculto antes de clic */
-  opacity: 0;         /* oculto suavemente */
-  transition: opacity 0.5s;
+    width: 70vw;       
+    height: 80vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    z-index: 1;
+    border: 3px solid #4a5568;
+    box-sizing: border-box;
+    border-radius: 12px;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 /* Mostrar libro */
 .book.show {
-  visibility: visible;
-  opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 
-/* Páginas */
+/* ===== Páginas ===== */
 .page {
-  width: 50%;
-  height: 100%;
-  background: #fff;
-  padding: 20px;
-  box-sizing: border-box;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-  border-right: 1px solid #ccc;
+    width: 50%;
+    height: 100%;
+    background: #ffffff;  
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    border-right: 1px solid #cbd5e0;
 }
 
 .right-page {
-  border-right: none;
-  border-left: 1px solid #ccc;
+    border-right: none;
+    border-left: 1px solid #cbd5e0;
 }
 
-/* Inputs y botones */
-.contenido input {
-  width: 90%;
-  padding: 5px;
-  margin-bottom: 10px;
-  font-size: 16px;
+/* ===== Contenido login centrado ===== */
+.right-page .contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* centra verticalmente */
+    align-items: center;      /* centra horizontalmente */
+    height: 100%;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
 }
 
+/* ===== Inputs login ===== */
+.login-input {
+    width: 70%;
+    max-width: 300px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 2px solid #9c6597;       /* borde elegante */
+    border-radius: 12px;
+    outline: none;
+    background-color: #f8f9fa;       /* fondo claro elegante */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    transition: all 0.3s ease;
+}
+
+/* Focus input */
+.login-input:focus {
+    border-color: #9c6597;           
+    box-shadow: 0 0 8px #9c6597;
+    background-color: #ffffff;
+}
+
+/* ===== Botón Enter ===== */
 .enter-btn {
-  display: inline-block;
-  padding: 8px 16px;
-  background: #8B4513;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 10px;
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #9c6597;       /* botón elegante oscuro */
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* Hover botón */
+.enter-btn:hover {
+    background-color: #caaac7;       
+    transform: translateY(-2px);
 }
