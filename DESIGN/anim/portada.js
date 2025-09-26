@@ -1,11 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const portada = document.getElementById("portada");
-  const book = document.getElementById("book");
+// Referencias a los elementos
+const portada = document.getElementById('portada');
+const book = document.getElementById('book');
 
-  portada.addEventListener("click", () => {
-    // ocultar portada
-    portada.parentElement.classList.add("hidden");
-    // mostrar páginas
-    book.classList.remove("hidden");
-  });
+// Función para abrir la portada
+portada.addEventListener('click', () => {
+  // Aplica la animación de giro
+  portada.style.transform = "rotateY(-180deg)";
+
+  // Espera a que termine la animación antes de mostrar el libro
+  setTimeout(() => {
+    portada.style.display = 'none';      // oculta la portada
+    book.classList.add('show');          // muestra las páginas internas
+  }, 1000); // 1000ms = duración de la transición
 });
