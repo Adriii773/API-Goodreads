@@ -4,7 +4,7 @@ body {
   justify-content: center;   /* centra horizontalmente */
   align-items: center;       /* centra verticalmente */
   height: 100vh;
-  background-color: rgb(230, 228, 170);
+  background-color: rgb(238, 237, 204);
 }
 
 /* Contenedor principal (ajustado para el menú fijo a la izquierda) */
@@ -53,7 +53,7 @@ body {
   width: 70%;
   height: 70%;
   border-radius: 50%;
-  background-color: #00387c;
+  background-color: #8b2191;
   opacity: 0;
   top: 50%;
   left: 50%;
@@ -84,7 +84,7 @@ body {
 }
 
 .foto-celda {
-  background-color: rgb(230, 228, 170); /* mantiene el fondo blanco como las otras */
+  background-color: rgb(239, 238, 203); /* mantiene el fondo blanco como las otras */
   overflow: hidden;        /* asegura que la imagen no sobresalga */
 }
 
@@ -93,4 +93,32 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 15px; /* igual que las demás esquinas */
+}
+.bingo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* dos columnas */
+  grid-template-rows: 200px 200px; /* filas más bajas, rectángulos horizontales */
+  gap: 20px;                        /* espacio entre cuadros */
+  width: 90%;                       /* ajusta al ancho de la pantalla */
+  margin: 20px auto;                /* centrado horizontal */
+}
+
+
+.bingo-cuadro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dea9d3;   /* color cuqui */
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.bingo-cuadro:hover {
+  transform: translateY(-5px);
+  background-color: #ecc9e5;
 }
