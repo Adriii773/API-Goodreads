@@ -9,15 +9,34 @@
 </head>
 <body>
 
-
-  <!-- Contenedor con óvalo y contenido centrado -->
-  <div class="contenedor-ovalado">
-
-    <div class="contenido-central">
-      <h2>Bienvenidos a Alejandría</h2>
-      <a href="main.html" class="start-box">Start</a>
+  <!-- mitad derecha que contiene la portada -->
+  <div class="right-half">
+    <div class="portada" id="portada">
+      <div class="titulo">PORTADA</div>
     </div>
   </div>
 
+  <!-- contenedor de las páginas (inicialmente oculto) -->
+  <div class="book hidden" id="book">
+<div class="page left-page">
+  <div class="contenido">
+    Inicio de sesión
+    <br><br>
+        <!-- Campos de inicio de sesión -->
+    <input type="text" placeholder="Usuario" class="login-input">
+    <br><br>
+    <input type="password" placeholder="Contraseña" class="login-input">
+   
+   <br><br>
+    <a href="../HTML/main.html" class="enter-btn">Enter</a>
+  </div>
+</div>
+
+    <div class="page right-page">
+      <div class="contenido">Aqui hay que poner algo pero todavía no sabemos el qué</div>
+    </div>
+  </div>
+
+  <script src="../anim/portada.js"></script>
 </body>
 </html>
