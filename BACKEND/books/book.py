@@ -6,8 +6,9 @@ ARCHIVO_CSV = os.path.join(BASE_DIR, "LIBROS.csv")
 
 LIBROS = []
 
-def add_books(libros):
-    archivo_libros_csv = ARCHIVO_CSV
+def add_books(libros, archivo_csv=None):
+    archivo_libros_csv = archivo_csv if archivo_csv else ARCHIVO_CSV
+
 
     # comprobamos que existe el archivo
     archivo_existe = os.path.isfile(archivo_libros_csv)
@@ -38,6 +39,7 @@ def add_books(libros):
                     "portada": libro[3] if len(libro) > 3 else ""
                 })
                 libros_existentes.add(clave)
+                
 
 def cargar_libros():
     global LIBROS
@@ -61,6 +63,9 @@ def cargar_libros():
 
     print("Libros cargados:", LIBROS)
 
+
+
+
 def search_books(texto):
     texto = texto.lower()
     resultados = [
@@ -68,6 +73,16 @@ def search_books(texto):
         if texto in libro["titulo"].lower() or texto in libro["autor"].lower()
     ]
     return resultados
+
+
+
+
+# def clear_books():
+#     global LIBROS
+#     LIBROS = []
+#     if os.path.isfile(ARCHIVO_CSV):
+        
+
 
 # =========================
 # TODOS LOS LIBROS CON PORTADAS

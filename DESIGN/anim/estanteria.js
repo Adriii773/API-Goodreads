@@ -75,3 +75,38 @@ document.addEventListener("DOMContentLoaded", () => {
     activarBotonAddLibro(btn);
   });
 });
+
+//
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const baldaId = params.get('balda'); // Obtener el ID de la balda desde la URL
+
+    if (baldaId) {
+        // Hacer GET para obtener los libros de la balda
+        try {
+            const res = await fetch(`http://127.0.0.1:8000/libros/balda/${baldaId}`);
+            const data = await res.json();
+
+            const balda = document.querySelector(`li[data-balda="${baldaId}"] .libros`);
+            if (balda) {
+                data.libros.forEach(libro => {
+                    const nuevoLibro = document.createElement('a');
+                    nuevoLibro.href = "#";
+                    nuevoLibro.textContent = libro.titulo;
+                    nuevoLibro.className = 'libro-agregado';
+
+                    const btnBorrar = document.createElement('button');
+                    btnBorrar.textContent = '×';
+                    btnBorrar.className = 'delete-libro';
+                    btnBorrar.addEventListener('click', () => nuevoLibro.remove());
+
+                    nuevoLibro.appendChild(btnBorrar);
+                    balda.insertBefore(nuevoLibro, balda.querySelector('.add-libro'));
+                });
+            }
+        } catch (error) {
+            console.error("Error al cargar libros:", error);
+        }
+    }
+});
