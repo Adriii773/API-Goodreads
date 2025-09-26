@@ -1,23 +1,97 @@
-/* Contenedor del buscador más pequeño */
+/* ===== Contenedor del buscador elegante y divertido ===== */
 .buscador {
   position: fixed;
-  top: 50%; 
-  left: calc(50% + 50px); /* compensando menú */
-  transform: translate(-50%, -50%);
+  top: 20px;                  /* pegado al borde superior */
+  left: 50%;                  /* centrado horizontal */
+  transform: translateX(-50%);
   z-index: 1000;
-  width: 100px;       /* ancho reducido */
-  max-width: 80%;     /* que no exceda pantalla en móviles */
-  font-family: Arial, sans-serif;
+  width: 280px;
+  max-width: 90%;             /* adaptable a móviles */
+  display: flex;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff;  /* fondo blanco limpio */
+  border: 2px solid  #e8d9ac; /* borde naranja divertido */
+  border-radius: 25px;        /* esquinas grandes y suaves */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* sombra ligera */
+  padding: 5px 10px;
+  transition: all 0.3s ease;
 }
 
-/* Input de búsqueda ajustado al nuevo ancho */
+/* ===== Input de búsqueda ===== */
 .buscador input[type="text"] {
-  width: 100%;
-  padding: 8px 30px 8px 10px; /* padding más pequeño para que encaje */
-  border: 1px solid #ccc;
-  border-radius: 20px;  
-  font-size: 14px;
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
   outline: none;
-  background: url('data:image/svg+xml;utf8,<svg fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.71 20.29l-3.388-3.388a8 8 0 10-1.414 1.414l3.388 3.388a1 1 0 001.414-1.414zM10 16a6 6 0 110-12 6 6 0 010 12z"/></svg>') no-repeat right 8px center;
-  background-size: 18px 18px;
+  font-size: 16px;
+  background: transparent;
+  color: #333;
+  border-radius: 20px;
+  font-weight: 500;
+  /* Icono de lupa divertido */
+  background: url('data:image/svg+xml;utf8,<svg fill="%23888" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.71 20.29l-3.388-3.388a8 8 0 10-1.414 1.414l3.388 3.388a1 1 0 001.414-1.414zM10 16a6 6 0 110-12 6 6 0 010 12z"/></svg>') no-repeat right 12px center;
+  background-size: 20px 20px;
+  transition: all 0.2s;
+}
+
+/* ===== Hover input ===== */
+.buscador input[type="text"]:focus {
+  box-shadow: 0 0 8px  #e8d9ac; /* resplandor divertido al escribir */
+  background-color: #fff8f0;
+}
+
+/* ===== Botón de búsqueda ===== */
+.buscador button {
+  background-color: #e8d9ac;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  margin-left: 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.buscador button:hover {
+  background-color: #e8d9ac;
+  transform: translateY(-2px); /* levanta el botón al pasar el mouse */
+}
+
+
+
+.resultados-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.resultados-dropdown li {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.resultados-dropdown li:hover {
+    background-color: #f0f0f0;
+
+
+
+#search-box {
+    outline: none;       /* quita el borde de focus predeterminado */
+    border: 1px solid #ccc; 
+    padding: 5px 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
 }

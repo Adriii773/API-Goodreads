@@ -1,0 +1,66 @@
+/* Contenedor de pestañas fijo debajo del buscador */
+.tabs {
+  position: fixed;
+  top: 110px; /* bajamos un poco más desde el buscador */
+  left: 0;
+  width: 100%;  
+  z-index: 1000;
+  display: flex;
+  gap: 5px; /* espacio entre pestañas */
+  justify-content: space-around; /* distribuye las pestañas en cuartos */
+  background-color: transparent;
+}
+
+/* Estilo de cada pestaña */
+.tab {
+  width: 100%;                   /* un cuarto del ancho */
+  max-width: 420px;             /* opcional */
+  height: 60px;                 /* más alta */
+  text-align: center;
+  line-height: 60px;            /* centra verticalmente el texto */
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: #ffffff;               /* texto blanco */
+  background-color: #e8d9ac;   /* mismo color que el botón de Start */
+  border: none;                 /* sin borde */
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.35); /* sombra más marcada */
+  transition: all 0.3s ease;
+}
+
+/* Hover de las pestañas */
+.tab:hover {
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+  transform: translateY(-3px);
+}
+
+/* Contenido de la página */
+.contenido-pagina {
+  margin-left: 120px; /* espacio para menú lateral */
+  margin-top: 200px;  /* espacio para buscador + pestañas más altas */
+  padding: 20px;
+}
+
+.tabelegida {
+  width: 100%;                   /* un cuarto del ancho */
+  max-width: 420px;             /* opcional */
+  height: 60px;                 /* más alta */
+  text-align: center;
+  line-height: 60px;            /* centra verticalmente el texto */
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: #e8d9ac;               /* texto blanco */
+  background-color: #ffffff;   /* mismo color que el botón de Start */
+  border: none;                 /* sin borde */
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.35); /* sombra más marcada */
+  transition: all 0.3s ease;
+}
+
+/* Hover de las pestañas */
+.tabelegida:hover {
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+  transform: translateY(-3px);
+}
