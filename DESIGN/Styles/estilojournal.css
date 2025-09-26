@@ -59,3 +59,15 @@ button {
 button:hover {
   background: #555;                  /* Cambio de color al pasar el mouse */
 }
+
+.estrella {
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
+      transition: color 0.2s;
+    }
+    .estrella.llena {
+      color: gold;
+    }
+
+    

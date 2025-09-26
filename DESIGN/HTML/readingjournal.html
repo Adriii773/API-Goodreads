@@ -21,7 +21,7 @@
   </ul>
 </nav>
 
- <div class="cuaderno">
+ <div class="cuaderno"  contenteditable="true">
     <div class="pagina" id="pagina-izq">Página izquierda</div>
     <div class="pagina" id="pagina-der">Página derecha</div>
     <div class="controles">
@@ -61,5 +61,43 @@
     mostrarPaginas();
   </script>
 
+<button onclick="crearEstrellas()" 
+        style="position: absolute; top: 10px; right: 10px;">
+  Añadir <br>  puntuación
+</button>
+
+  <script>
+    function crearEstrellas() {
+      const contenedor = document.getElementById("contenedor");
+      contenedor.innerHTML = ""; // limpiar antes de añadir nuevas estrellas
+
+      for (let i = 1; i <= 5; i++) {
+        let estrella = document.createElement("span");
+        estrella.innerHTML = "★"; // símbolo de estrella
+        estrella.classList.add("estrella");
+
+        // cuando se hace clic, actualizar puntuación
+        estrella.addEventListener("click", () => marcarEstrellas(i));
+
+        contenedor.appendChild(estrella);
+      }
+    }
+
+    function marcarEstrellas(puntuacion) {
+      const estrellas = document.querySelectorAll(".estrella");
+      estrellas.forEach((estrella, index) => {
+        if (index < puntuacion) {
+          estrella.classList.add("llena");
+        } else {
+          estrella.classList.remove("llena");
+        }
+      });
+      console.log("Puntuación seleccionada:", puntuacion);
+    }
+  </script>
+
 </body>
 </html>
+
+  <!-- Aquí aparecerán las estrellas -->
+  <div id="contenedor"></div>
