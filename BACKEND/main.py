@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from fastapi import HTTPException
+import os
+import csv
 import books.book
 
 app = FastAPI ()
@@ -23,8 +25,6 @@ class Book(BaseModel):
     titulo: str
     autor: str
     anio: str
-    portada: str
-    balda: int
 
 books_storage = []
 
@@ -47,8 +47,6 @@ def agregar_libro_balda(balda_id: int, libro: Book):
         libro.titulo,
         libro.autor,
         libro.anio,
-        libro.portada,
-        balda_id
     ]
 
     # Guardamos en un CSV distinto, ej. balda1.csv
@@ -58,10 +56,22 @@ def agregar_libro_balda(balda_id: int, libro: Book):
     return {"message": f"Libro añadido a balda {balda_id}", "libro": libro}
 
 
-# @app.get("/libros/balda/{balda_id}")
-# def obtener_libros_balda(balda_id: int):
-#     libros_balda = [libro for libro in books_storage if libro["balda"] == balda_id]
-#     return {"libros": libros_balda}
+@app.get("/libros/balda/{balda_id}")
+def obtener_libros_balda(balda_id: int):
+    nombre_csv = f"balda{balda_id}.csv"
+    if not os.path.isfile(nombre_csv):
+        return {"libros": []}  # si no existe, devolvemos vacío
+
+    libros = []
+    with open(nombre_csv, mode="r", encoding="utf-8") as file:
+        lector = csv.DictReader(file)
+        for fila in lector:
+            libros.append({
+                "titulo": fila.get("titulo", ""),
+                "autor": fila.get("autor", ""),
+                "anio": fila.get("anio", "")
+            })
+    return {"libros": libros}
 
 
 

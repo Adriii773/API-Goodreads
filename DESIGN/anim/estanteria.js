@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function crearLibro(src = 'libro-placeholder.jpg') {
     const newLibro = document.createElement('a');
     newLibro.href = '#';
-    newLibro.innerHTML = `<img src="${src}" alt="Nuevo libro">`;
 
     // Botón de borrar libro
     const btnBorrar = document.createElement('button');
@@ -51,22 +50,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------
   // Añadir balda nueva
   // -------------------------------
-  addBaldaBtn.addEventListener("click", () => {
-    const nuevaBalda = document.createElement("li");
+  if (addBaldaBtn) {
+    addBaldaBtn.addEventListener("click", () => {
+      const nuevaBalda = document.createElement("li");
 
-    nuevaBalda.innerHTML = `
-      <button class="delete-balda">×</button>
-      <div class="libros">
-        <button class="add-libro">+</button>
-      </div>
-    `;
+      nuevaBalda.innerHTML = `
+        <button class="delete-balda">×</button>
+        <div class="libros">
+          <button class="add-libro">+</button>
+        </div>
+      `;
 
-    listaBaldas.appendChild(nuevaBalda);
+      listaBaldas.appendChild(nuevaBalda);
 
-    // Activar botones de la balda nueva
-    activarBotonAddLibro(nuevaBalda.querySelector(".add-libro"));
-    activarBotonDeleteBalda(nuevaBalda.querySelector(".delete-balda"));
-  });
+      // Activar botones de la balda nueva
+      activarBotonAddLibro(nuevaBalda.querySelector(".add-libro"));
+      activarBotonDeleteBalda(nuevaBalda.querySelector(".delete-balda"));
+    });
+  }
 
   // -------------------------------
   // Activar botones "+" de baldas iniciales
@@ -75,8 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     activarBotonAddLibro(btn);
   });
 });
-
-//
 
 document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
