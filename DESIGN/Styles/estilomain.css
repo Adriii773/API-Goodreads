@@ -64,3 +64,58 @@
   box-shadow: 0 12px 24px rgba(0,0,0,0.4);
   transform: translateY(-3px);
 }
+
+/* Bloque principal movible */
+.ficha-libro {
+    position: absolute;
+    top: 200px;
+    left: 250px;
+    display: flex;
+    gap: 40px; /* espacio entre portada y contenedor de info */
+    align-items: stretch; /* altura uniforme respecto a la portada */
+}
+
+/* Portada */
+.img-mover {
+    width: 250px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3); /* un toque elegante */
+    margin-top: 30px;
+}
+
+/* Contenedor de info + estrellas */
+.info-contenedor {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch; /* columna de info ocupa la misma altura que la portada */
+    gap: 30px; /* espacio entre columna de info y estrellas */
+}
+
+/* Columna de información */
+.info-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centrado vertical elegante */
+    font-size: 28px;
+}
+
+/* Título */
+.info-texto h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Párrafos */
+.info-texto p {
+    margin: 8px 0;
+    font-size: 28px;
+}
+
+/* Estrellas */
+.estrellas {
+    font-size: 56px; /* mucho más grande */
+    color: gold;
+    align-self: center; /* centrado verticalmente */
+}
