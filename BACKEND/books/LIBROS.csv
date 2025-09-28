@@ -1,16 +1,16 @@
-titulo,autor,anio,portada
-Asistente del villano,Hannah Nicole Maehrer,2023,
-Los seis de Atlas,Olivie Blake,2022,
-El juego del alma,Carlos Ruiz Zafón,2020,
-Nuncanoche,Jay Kristoff,2018,
-El príncipe cruel,Holly Black,2018,
-Cazadores de sombras,Cassandra Clare,2007,
-El nombre del viento,Patrick Rothfuss,2007,
-El temor de un hombre sabio,Patrick Rothfuss,2011,
-La voz de las espadas,Joe Abercrombie,2006,
-El camino de los reyes,Brandon Sanderson,2010,
-Palabras radiantes,Brandon Sanderson,2014,
-Juramentada,Brandon Sanderson,2017,
-El ritmo de la guerra,Brandon Sanderson,2020,
-Viento y verdad,Brandon Sanderson,2017,
-Una corte de niebla y furia,Sarah J Maas,2017,
+id,titulo,autor,anio
+1,Asistente del villano,Hannah Nicole Maehrer,2023
+2,Los seis de Atlas,Olivie Blake,2022
+3,El juego del alma,Carlos Ruiz Zafón,2020
+4,Nuncanoche,Jay Kristoff,2018
+5,El príncipe cruel,Holly Black,2018
+6,Cazadores de sombras,Cassandra Clare,2007
+7,El nombre del viento,Patrick Rothfuss,2007
+8,El temor de un hombre sabio,Patrick Rothfuss,2011
+9,La voz de las espadas,Joe Abercrombie,2006
+10,El camino de los reyes,Brandon Sanderson,2010
+11,Palabras radiantes,Brandon Sanderson,2014
+12,Juramentada,Brandon Sanderson,2017
+13,El ritmo de la guerra,Brandon Sanderson,2020
+14,Viento y verdad,Brandon Sanderson,2017
+15,Una corte de niebla y furia,Sarah J Maas,2017

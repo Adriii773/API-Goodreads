@@ -1,5 +1,2 @@
-titulo,autor,anio
-El camino de los reyes,Brandon Sanderson,2010
-Asistente del villano,Hannah Nicole Maehrer,2023
-Los seis de Atlas,Olivie Blake,2022
-Cazadores de sombras,Cassandra Clare,2007
+id,titulo,autor,anio
+1,El camino de los reyes,Brandon Sanderson,2010

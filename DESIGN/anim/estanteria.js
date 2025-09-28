@@ -1,21 +1,56 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const addBaldaBtn = document.getElementById("add-balda");
   const listaBaldas = document.querySelector(".menu-pagina ul");
 
   // -------------------------------
   // Crear libro
   // -------------------------------
-  function crearLibro(src = 'libro-placeholder.jpg') {
-    const newLibro = document.createElement('a');
-    newLibro.href = '#';
+  function crearLibro(src = "", libroId = null, baldaId = null, titulo = '') {
+    const newLibro = document.createElement('div');
+    newLibro.className = 'libro';
+
+    // Guardamos IDs en dataset si los tenemos
+    if (libroId) newLibro.dataset.libroId = libroId;
+    if (baldaId) newLibro.dataset.baldaId = baldaId;
+
+    // Añadimos la imagen placeholder si se proporciona
+    const img = document.createElement('img');
+    img.src = src;
+    // img.alt = titulo || (libroId ? 'Libro ' + libroId : 'Libro sin ID');
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    img.style.borderRadius = '4px';
+    newLibro.appendChild(img);
+
+    // Añadimos el título como overlay en la parte inferior
+    const titleSpan = document.createElement('span');
+    titleSpan.textContent = titulo || (libroId ? 'Libro ' + libroId : 'Libro sin ID');
+    titleSpan.className = 'libro-titulo';
+    newLibro.appendChild(titleSpan);
 
     // Botón de borrar libro
     const btnBorrar = document.createElement('button');
     btnBorrar.textContent = '×';
     btnBorrar.className = 'delete-libro';
+
+    // Evento para borrar libro
     btnBorrar.addEventListener('click', (e) => {
       e.preventDefault();
-      newLibro.remove();
+      e.stopPropagation();  // Añadido para evitar propagación al padre
+
+      const libroElement = e.currentTarget.parentElement;  // Obtenemos el div padre
+      const libroIdFromDataset = libroElement.dataset.libroId;
+      const baldaIdFromDataset = libroElement.dataset.baldaId;
+
+      console.log(`Intentando borrar libro con ID ${libroIdFromDataset} de balda ${baldaIdFromDataset}`);
+
+      if (libroIdFromDataset && baldaIdFromDataset) {
+        borrarLibroDelDom(libroElement);
+      } else {
+        libroElement.remove();
+        console.log('Libro sin IDs eliminado solo del DOM');
+      }
     });
 
     newLibro.appendChild(btnBorrar);
@@ -23,18 +58,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // -------------------------------
-  // Activar botón "+"
+  // Borrar libro
   // -------------------------------
-  function activarBotonAddLibro(boton) {
-    // Clonar para remover listeners previos
-    const newBtn = boton.cloneNode(true);
-    boton.replaceWith(newBtn);
+  async function borrarLibroDelDom(libroElement) {
+    const libroId = libroElement.dataset.libroId;
+    const baldaId = libroElement.dataset.baldaId;
+    console.log(`Enviando DELETE a /libros/balda/${baldaId}/${libroId}`);
 
-    newBtn.addEventListener("click", () => {
-      const contenedorLibros = newBtn.parentElement;
-      const libro = crearLibro();
-      contenedorLibros.insertBefore(libro, newBtn);
-    });
+    try {
+      const res = await fetch(`http://127.0.0.1:8000/libros/balda/${baldaId}/${libroId}`, { method: "DELETE" });
+      console.log(`Respuesta del backend: status ${res.status}`);
+      const data = await res.json();
+      console.log('Respuesta body:', data);
+      if (res.ok) {
+        libroElement.remove();
+        console.log('Libro eliminado del DOM y backend OK');
+      } else {
+        console.error("Error borrando libro en backend");
+      }
+    } catch (err) {
+      console.error("Error al borrar libro:", err);
+    }
   }
 
   // -------------------------------
@@ -52,60 +96,62 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------
   if (addBaldaBtn) {
     addBaldaBtn.addEventListener("click", () => {
+      const baldasExistentes = document.querySelectorAll('li[data-balda]');
+      const nuevoId = baldasExistentes.length + 1;  // ID secuencial simple (puedes ajustar si backend lo maneja)
       const nuevaBalda = document.createElement("li");
+      nuevaBalda.dataset.balda = nuevoId;
 
       nuevaBalda.innerHTML = `
         <button class="delete-balda">×</button>
         <div class="libros">
-          <button class="add-libro">+</button>
+          <a href="self_buscador.html?balda=${nuevoId}" class="add-libro">+</a>
         </div>
-      `;
+      `;  
 
       listaBaldas.appendChild(nuevaBalda);
-
-      // Activar botones de la balda nueva
-      activarBotonAddLibro(nuevaBalda.querySelector(".add-libro"));
       activarBotonDeleteBalda(nuevaBalda.querySelector(".delete-balda"));
     });
   }
 
   // -------------------------------
-  // Activar botones "+" de baldas iniciales
+  // Cargar libros existentes desde backend
   // -------------------------------
-  document.querySelectorAll(".menu-pagina ul li .add-libro").forEach(btn => {
-    activarBotonAddLibro(btn);
-  });
-});
+  const baldas = document.querySelectorAll('li[data-balda]');
 
-document.addEventListener("DOMContentLoaded", async () => {
-    const params = new URLSearchParams(window.location.search);
-    const baldaId = params.get('balda'); // Obtener el ID de la balda desde la URL
+  for (const baldaElement of baldas) {
+    const baldaId = baldaElement.dataset.balda;
+    console.log(`Cargando libros para balda ${baldaId}`);
 
-    if (baldaId) {
-        // Hacer GET para obtener los libros de la balda
-        try {
-            const res = await fetch(`http://127.0.0.1:8000/libros/balda/${baldaId}`);
-            const data = await res.json();
+    try {
+      const res = await fetch(`http://127.0.0.1:8000/libros/balda/${baldaId}?t=${Date.now()}`);
+      console.log(`Respuesta GET para balda ${baldaId}: status ${res.status}`);
+      const data = await res.json();
+      console.log(`Datos recibidos para balda ${baldaId}:`, data);
 
-            const balda = document.querySelector(`li[data-balda="${baldaId}"] .libros`);
-            if (balda) {
-                data.libros.forEach(libro => {
-                    const nuevoLibro = document.createElement('a');
-                    nuevoLibro.href = "#";
-                    nuevoLibro.textContent = libro.titulo;
-                    nuevoLibro.className = 'libro-agregado';
+      const contenedorLibros = baldaElement.querySelector('.libros');
+      if (contenedorLibros && data.libros) {
+        // Guardamos el botón + antes de limpiar
+        const addLibroLink = contenedorLibros.querySelector('a[href*="self_buscador.html"]');
+        contenedorLibros.innerHTML = '';
+        if (addLibroLink) contenedorLibros.appendChild(addLibroLink);
 
-                    const btnBorrar = document.createElement('button');
-                    btnBorrar.textContent = '×';
-                    btnBorrar.className = 'delete-libro';
-                    btnBorrar.addEventListener('click', () => nuevoLibro.remove());
+        data.libros.forEach(libro => {
+          if (libro.titulo.trim()) {
+            // ✅ Evitar duplicados
+            const existingLibro = contenedorLibros.querySelector(`.libro[data-libro-id="${libro.id}"]`);
+            if (existingLibro) existingLibro.remove();
 
-                    nuevoLibro.appendChild(btnBorrar);
-                    balda.insertBefore(nuevoLibro, balda.querySelector('.add-libro'));
-                });
+            const nuevoLibro = crearLibro("", libro.id, baldaId, libro.titulo);
+            if (addLibroLink) {
+              contenedorLibros.insertBefore(nuevoLibro, addLibroLink);
+            } else {
+              contenedorLibros.appendChild(nuevoLibro);
             }
-        } catch (error) {
-            console.error("Error al cargar libros:", error);
-        }
+          }
+        });
+      }
+    } catch (error) {
+      console.error(`Error al cargar libros de balda ${baldaId}:`, error);
     }
+  }
 });
