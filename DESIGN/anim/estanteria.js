@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         libroElement.remove();
         console.log('Libro sin IDs eliminado solo del DOM');
       }
-    });
+    });       
 
     newLibro.appendChild(btnBorrar);
     return newLibro;
@@ -94,24 +94,51 @@ document.addEventListener("DOMContentLoaded", async () => {
   // -------------------------------
   // Añadir balda nueva
   // -------------------------------
+
+
+
   if (addBaldaBtn) {
-    addBaldaBtn.addEventListener("click", () => {
-      const baldasExistentes = document.querySelectorAll('li[data-balda]');
-      const nuevoId = baldasExistentes.length + 1;  // ID secuencial simple (puedes ajustar si backend lo maneja)
-      const nuevaBalda = document.createElement("li");
-      nuevaBalda.dataset.balda = nuevoId;
+    addBaldaBtn.addEventListener("click", async () => {
+      try{
+        let nombreBalda = prompt("introduce el nombre de la balda: ");
+        if (!nombreBalda) return;
 
-      nuevaBalda.innerHTML = `
-        <button class="delete-balda">×</button>
-        <div class="libros">
-          <a href="self_buscador.html?balda=${nuevoId}" class="add-libro">+</a>
-        </div>
-      `;  
+        const baldaIdDataset = addBaldaBtn.dataset.balda;
+        const baldaId = baldaIdDataset ? parseInt(baldaIdDataset): null;
 
-      listaBaldas.appendChild(nuevaBalda);
-      activarBotonDeleteBalda(nuevaBalda.querySelector(".delete-balda"));
-    });
+        const respuesta = await fetch("http://127.0.0.1:8000/baldas",{
+          method: "POST", 
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({
+            "nombre_balda": nombreBalda
+          })
+        });
+        if (!respuesta.ok) throw new Error(`Error creando la balda en el BACKEND`);
+
+        const nuevaBaldaData = await respuesta.json();
+        const nuevaBalda = document.createElement("li");
+        nuevaBalda.dataset.balda = nuevaBaldaData.id;
+        
+        nuevaBalda.innerHTML = `
+          <span class="titulo-balda">${nuevaBaldaData.nombre_balda}</span>
+          <button class="delete-balda">×</button>
+            <div class="libros">
+              <a href="self_buscador.html?balda=${nuevaBaldaData.id}" class="add-libro">+</a>
+            </div>
+        `
+        listaBaldas.appendChild(nuevaBalda);
+        activarBotonDeleteBalda(nuevaBalda.querySelector(".delete-balda")); 
+
+
+      }catch(error){
+        console.error("Error al crear la balda", error);
+      }
+
+    })
   }
+
+
+
 
   // -------------------------------
   // Cargar libros existentes desde backend

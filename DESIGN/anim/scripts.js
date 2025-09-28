@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         data.libros.forEach(libro => {
           const libroElement = crearLibro(libro.portada);
-          const addLibroLink = container.querySelector('a:has(.add-libro)');
+          const addLibroLink = container.querySelector('a.add-libro');
           if (addLibroLink) {
             container.insertBefore(libroElement, addLibroLink || null);
           } else {
