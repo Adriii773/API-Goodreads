@@ -29,33 +29,41 @@
                     resultadosUL.appendChild(li);
 
                     // CLICK para añadir libro (POST)
-                    li.addEventListener('click', async () => {
-                        const params = new URLSearchParams(window.location.search);
-                        const baldaIdParam = params.get('balda');
-                        const baldaId = baldaIdParam ? parseInt(baldaIdParam) : null;
-                        if (!baldaId) {
-                            console.error("No se pudo determinar la baldaId desde la URL");
-                            return;
-                        }
+                   li.addEventListener('click', async (e) => {
+                    e.preventDefault();      // evita comportamiento por defecto
+                    e.stopPropagation();     // evita que el click suba al ul
 
-                        const libroData = {
-                            titulo: libro.titulo,
-                            autor: libro.autor,
-                            anio: libro.anio ? String(libro.anio) : "", // <- siempre str
-                        };
+                    const params = new URLSearchParams(window.location.search);
+                    const baldaIdParam = params.get('balda');
+                    const baldaId = baldaIdParam ? parseInt(baldaIdParam) : null;
+                    if (!baldaId) {
+                        console.error("No se pudo determinar la baldaId desde la URL");
+                        return;
+                    }
 
-                        try {
-                            const res = await fetch(`http://127.0.0.1:8000/libros/${baldaId}`, {
-                                method: "POST",
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify(libroData),
-                            });
-                            if (res.ok) window.location.href = "estanterías.html";
-                            else console.error("Error al añadir libro");
-                        } catch (error) {
-                            console.error("Error en POST:", error);
+                    const libroData = {
+                        titulo: libro.titulo,
+                        autor: libro.autor,
+                        anio: libro.anio ? String(libro.anio) : "",
+                    };
+
+                    try {
+                        const res = await fetch(`http://127.0.0.1:8000/libros/${baldaId}`, {
+                            method: "POST",
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(libroData),
+                        });
+                        if (res.ok) {
+                            // redirige correctamente
+                            window.location.replace("estanterias.html");
+                        } else {
+                            console.error("Error al añadir libro");
                         }
-                    });
+                    } catch (error) {
+                        console.error("Error en POST:", error);
+                    }
+                });
+
                 });
 
             } catch (error) {
